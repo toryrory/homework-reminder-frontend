@@ -20,10 +20,13 @@ export const signUp = async (data) => {
 };
 export const logIn = async (data) => {
   const response = await axios.post("login/", data);
-
-  token.set(response.data.token);
+  if (response.status !== 200) {
+    return response.statusText
+  } else if (response.status === 200) {
+     token.set(response.data.token);
   localStorage.setItem("token", response.data.token);
   return response.data;
+  }
 };
 
 export const getUserTasks = async (userId) => {
@@ -35,7 +38,7 @@ export const getUserTasks = async (userId) => {
   const response = await axios.get(`/api/users/${userId}/task/`, {
     headers: headers,
   });
-
+console.log(response.data);
   return response.data;
 };
 export const addTask = async (userId, data) => {
