@@ -1,0 +1,111 @@
+.modal_background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    cursor: pointer;
+    z-index: 1;
+    background: rgb(0, 0, 0, 0.4);
+
+}
+
+.modal {
+    position: absolute;
+    width: 400px;
+    top: calc(50% - 250px);
+    left: calc(50% - 175px);
+    border-radius: 10px;
+    background-color: #a8c2e9;
+    cursor: default;
+    padding: 40px 20px;
+
+}
+
+.modal_content {
+    position: relative;
+}
+
+.cross {
+    position: relative;
+    top: -25px;
+    left: 340px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    /* pointer-events: none; */
+}
+
+.cross:focus {
+    outline: none;
+}
+
+.form_top {
+    display: flex;
+    gap: 30px;
+}
+
+.form_select {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.form_item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.form_input {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.form_input:focus {
+    outline: none;
+}
+
+.btns_group {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.btn_active {
+    width: 100px;
+    height: 40px;
+    border: 2px solid #204172;
+    border-radius: 20px;
+    background-color: #66d492;
+    cursor: pointer;
+}
+
+.btn_not_active {
+    width: 100px;
+    height: 40px;
+    border: 2px solid #204172;
+    border-radius: 20px;
+    background-color: #d86767;
+    cursor: pointer;
+}
+
+.btn_submit {
+    width: 90px;
+    height: 40px;
+    border: 2px solid #204172;
+    border-radius: 20px;
+    background-color: #67add8;
+    cursor: pointer;
+}
+
+.btn_active:focus,
+.btn_not_active:focus,
+.btn_submit:focus {
+    outline: none;
+}

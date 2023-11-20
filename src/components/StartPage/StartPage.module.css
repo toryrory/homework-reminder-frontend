@@ -1,0 +1,13 @@
+.main {
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../../../public/blue-dark-background.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+}

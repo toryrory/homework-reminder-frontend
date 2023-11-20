@@ -1,0 +1,89 @@
+.list_item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 480px;
+    background-color: #67add8;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 10px 9px 17px 0px rgba(0, 0, 0, 0.573);
+}
+
+.details {
+    width: 430px;
+    height: 120px;
+    border: 2px solid white;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: rgba(240, 248, 255, 0.281);
+    color: white;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.details:focus {
+    outline: none;
+}
+
+.deadline {
+    width: 230px;
+    height: 40px;
+    border: 2px solid white;
+    border-radius: 5px;
+    background-color: rgba(240, 248, 255, 0.281);
+    color: white;
+    font-size: 18px;
+    padding: 5px;
+}
+
+.text {
+    font-size: 28px;
+    color: white;
+    width: 430px;
+    white-space: wrap;
+    word-wrap: break-word;
+    margin-bottom: 10px;
+    border-bottom: 1px solid white;
+}
+
+.text_details {
+    font-size: 28px;
+    color: white;
+    width: 430px;
+    white-space: wrap;
+    word-wrap: break-word;
+    width: fit-content;
+
+}
+
+.box {
+    display: flex;
+    gap: 140px;
+    align-items: center;
+}
+
+.edit_box {
+    margin-bottom: 10px;
+    display: flex;
+    gap: 50px;
+    align-items: flex-end;
+}
+
+.edit {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.delete {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
