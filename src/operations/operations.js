@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "https://1d41-92-244-109-27.ngrok-free.app";
+axios.defaults.baseURL = "https://8620-92-244-109-27.ngrok-free.app";
 
 let token = {
   set(token) {
@@ -30,16 +30,20 @@ export const logIn = async (data) => {
 };
 
 export const getUserTasks = async (userId) => {
-  const token = localStorage.getItem("token");
+  const tokenStorage = localStorage.getItem("token");
   const headers = {
     "ngrok-skip-browser-warning": "1223",
-    Authorization: `Token ${token}`,
+    Authorization: `Token ${tokenStorage}`,
   };
-  const response = await axios.get(`/api/users/${userId}/task/`, {
-    headers: headers,
-  });
-console.log(response.data);
+ 
+     const response = await axios.get(`/api/users/${userId}/task/`, {
+       headers: headers,
+     });
+   if (response.status === 401) {
+     token.unset();
+   }
   return response.data;
+  
 };
 export const addTask = async (userId, data) => {
   const token = localStorage.getItem("token");

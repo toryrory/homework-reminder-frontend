@@ -22,7 +22,14 @@ export default function UserAccount() {
   useEffect(() => {
     getUserTasks(userId)
       .then((data) => setTasks(data))
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+        if (error.response.status === 401) {
+          localStorage.removeItem("token");
+          localStorage.removeItem("name");
+          navigate('/');
+        }
+      });
   }, [userId, modalOpen]);
 
   const handleDeleteTask = (taskId) => {
@@ -75,7 +82,7 @@ export default function UserAccount() {
       {modalOpen && (
         <AddTaskModal onClick={handleModalAction} closeModal={closeModal} />
       )}
-      {tasks.length > 0 && (
+      {tasks?.length > 0 && (
         <TasksList tasks={tasks} onDeleteTask={handleDeleteTask} />
       )}
     </>

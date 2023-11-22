@@ -15,7 +15,7 @@ export default function AuthorizationForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { name, surname, email, password } = e.target.elements;
-    
+    setError(null);
     if (formRegister) {
       const dataRegister = {
         email: email.value,
@@ -25,7 +25,10 @@ export default function AuthorizationForm() {
       };
       signUp(dataRegister)
         .then((data) => { navigate(`/account/${data.user.id}`);  localStorage.setItem("name", data.user.first_name);})
-        .catch((error) => console.log("custom error:", error)); //navigate(`/account/${data.user.id}`)
+        .catch((error) => {
+          console.log(error);
+          setError(error);
+        }); //navigate(`/account/${data.user.id}`)
      
     } else {
       setError(null);
@@ -46,8 +49,11 @@ export default function AuthorizationForm() {
     <>
       <form className={css.form} onSubmit={handleSubmit} autoComplete='off'>
         <h2 className={css.title}>{formRegister ? "Signup" : "Log In"}</h2>
-        {error && <p className={css.error}>
+        {error && !formRegister && <p className={css.error}>
           <MdErrorOutline size={20} /> incorrect email or password
+        </p>}
+        {error && formRegister && <p className={css.error}>
+          <MdErrorOutline size={20} /> Email is already taken
         </p>}
         
         {formRegister && (
