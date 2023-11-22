@@ -11,12 +11,18 @@ export default function AuthorizationForm() {
 
   const changeFormRegister = () => {
     setFormRegister((prevState) => !prevState);
+    setError(null);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { name, surname, email, password } = e.target.elements;
     setError(null);
+    const { name, surname, email, password } = e.target.elements;
+    
     if (formRegister) {
+       if (!name.value || !surname.value || !email.value || !password.value) {
+         setError("emptyField");
+         return;
+       }
       const dataRegister = {
         email: email.value,
         password: password.value,
@@ -27,11 +33,14 @@ export default function AuthorizationForm() {
         .then((data) => { navigate(`/account/${data.user.id}`);  localStorage.setItem("name", data.user.first_name);})
         .catch((error) => {
           console.log(error);
-          setError(error);
+          setError("registerError");
         }); //navigate(`/account/${data.user.id}`)
      
     } else {
-      setError(null);
+       if (!email.value || !password.value) {
+         setError("emptyField");
+         return;
+       }
        const dataLogin = {
          email: email.value,
          password: password.value,
@@ -41,7 +50,7 @@ export default function AuthorizationForm() {
           "name",
           data.user.first_name + " " + data.user.last_name
         );})
-        .catch((error) => { console.log(error);  setError(error)});
+        .catch((error) => { console.log(error);  setError("loginError")});
     }
   };
 
@@ -49,13 +58,22 @@ export default function AuthorizationForm() {
     <>
       <form className={css.form} onSubmit={handleSubmit} autoComplete='off'>
         <h2 className={css.title}>{formRegister ? "Signup" : "Log In"}</h2>
-        {error && !formRegister && <p className={css.error}>
-          <MdErrorOutline size={20} /> incorrect email or password
-        </p>}
-        {error && formRegister && <p className={css.error}>
-          <MdErrorOutline size={20} /> Email is already taken
-        </p>}
-        
+        {error === "emptyField" && (
+          <p className={css.error}>
+            <MdErrorOutline size={20} /> please fill out all fields
+          </p>
+        )}
+        {error === "loginError" && !formRegister && (
+          <p className={css.error}>
+            <MdErrorOutline size={20} /> incorrect email or password
+          </p>
+        )}
+        {error === "registerError" && formRegister && (
+          <p className={css.error}>
+            <MdErrorOutline size={20} /> Email is already taken
+          </p>
+        )}
+
         {formRegister && (
           <>
             <label className={css.label} htmlFor='name'>
