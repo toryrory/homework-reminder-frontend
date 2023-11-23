@@ -80,17 +80,21 @@ export default function AuthorizationForm() {
               {" "}
               First name:
             </label>
-            <input className={css.input} name='name' />
+            <input className={css.input} name='name' placeholder='Vadym' />
             <label className={css.label} htmlFor='surname'>
               Last name:
             </label>
-            <input className={css.input} name='surname' />{" "}
+            <input className={css.input} name='surname' placeholder='Pupkin' />{" "}
           </>
         )}
         <label className={css.label} htmlFor='email'>
           Email:
         </label>
-        <input className={css.input} name='email' />
+        <input
+          className={css.input}
+          name='email'
+          placeholder='vdtrunov007@gmail.com'
+        />
         <label className={css.label} htmlFor='password'>
           Password:
         </label>
