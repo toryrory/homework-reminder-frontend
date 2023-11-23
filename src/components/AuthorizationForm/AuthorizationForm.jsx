@@ -93,7 +93,7 @@ export default function AuthorizationForm() {
         <input
           className={css.input}
           name='email'
-          placeholder='vdtrunov007@gmail.com'
+          placeholder='vdpupkin007@gmail.com'
         />
         <label className={css.label} htmlFor='password'>
           Password:
