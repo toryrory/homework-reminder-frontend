@@ -84,7 +84,7 @@ export default function AuthorizationForm() {
             <label className={css.label} htmlFor='surname'>
               Last name:
             </label>
-            <input className={css.input} name='surname' placeholder='Pupkin' />{" "}
+            <input className={css.input} name='surname' placeholder='Surname' />{" "}
           </>
         )}
         <label className={css.label} htmlFor='email'>
